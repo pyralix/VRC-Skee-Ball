@@ -5,7 +5,7 @@
 ![Header](https://raw.githubusercontent.com/pyralix/VRC-Skee-Ball/main/.github/images/skeeball.PNG)
 
 
-This is my first prefab that I've made for VRChat, and I hope you find it as enjoyable to use and edit to your liking as I did creating it. It was largely a vehicle for learning Unity, Udon, and the VRC Networking functionalities.
+This is my first prefab that I've made for VRChat, and I hope you find it as enjoyable to use and edit to your liking as I did creating it. It was largely a vehicle for learning Unity, Udon, and the VRC Networking functionalities. I appreciate positive and negative feedback alike and plan to improve it based on the feedback I recieve!
 
 This prefab is using object sync and manual udon sync exclusively in order to be as network efficient as I can make it with my current understanding. 
 
