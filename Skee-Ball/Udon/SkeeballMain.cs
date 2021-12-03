@@ -35,6 +35,26 @@ namespace Pyralix.SkeeBall
         [SerializeField] private TextAsset VersionFile;
         private string version;
 
+        private void Start()
+        {
+            version = VersionFile.text;
+
+            balls = BallStorage.GetComponentsInChildren<Ball>();
+
+            int ballCount = balls.Length;
+
+            ballGameObjects = new GameObject[ballCount];
+
+            for (int i = 0; i < ballCount; i++)
+            {
+                ballGameObjects[i] = balls[i].gameObject;
+            }
+
+            OwnerName = $"Skee-Ball {version} by Pyralix";
+            OwnerText.GetComponent<Text>().text = $"{OwnerName}";
+            RequestSerialization();
+        }
+
         private void TogglePower()
         {
             if (Networking.IsOwner(gameObject))
@@ -196,27 +216,6 @@ namespace Pyralix.SkeeBall
             {
                 ball.Now();
             }
-        }
-
-        //Events
-        public void Start()
-        {
-            version = VersionFile.text;
-
-            balls = BallStorage.GetComponentsInChildren<Ball>();
-
-            int ballCount = balls.Length;
-
-            ballGameObjects = new GameObject[ballCount];
-
-            for(int i = 0; i < ballCount; i++)
-            {
-                ballGameObjects[i] = balls[i].gameObject;
-            }
-
-            OwnerName = $"Skee-Ball {version} by Pyralix";
-            OwnerText.GetComponent<Text>().text = $"{OwnerName}";
-            RequestSerialization();
         }
 
         public override void OnPlayerJoined(VRCPlayerApi api)
