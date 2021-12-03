@@ -31,4 +31,4 @@ Requirements:
 1. [Download the latest unitypackage](https://github.com/pyralix/VRC-Skee-Ball/releases/download/v1.3/Skee-ball.v1.3.unitypackage).
 2. Import Skee-ball v1.3.unitypackage into your project that already has the SDK and UdonSharp loaded.
 3. Drag prefab in the Skee-Ball v#.# folder into your world or open the example scene.
-4. Consider disabling the audio sources on the balls if you have more than 1 machine as they use up many audio slots due to being not well optimizing yet.
+4. Consider disabling the audio sources on the balls if you have more than 1 machine as they use up many audio slots due to being not well optimized yet.
