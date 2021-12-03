@@ -3,15 +3,18 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 
-public class ResetButton : UdonSharpBehaviour
+namespace Pyralix.SkeeBall
 {
-    [SerializeField] SkeeballMain SkeeballMain;
-    [SerializeField] private AudioSource audio;
-    public GameObject PowerButtonLight;
-    public override void Interact()
+    public class ResetButton : UdonSharpBehaviour
     {
-        SkeeballMain.Reset(Networking.LocalPlayer);
-        PowerButtonLight.SetActive(false);
-        audio.Play();
+        [SerializeField] SkeeballMain SkeeballMain;
+        [SerializeField] private AudioSource audio;
+        public GameObject PowerButtonLight;
+        public override void Interact()
+        {
+            SkeeballMain.Reset(Networking.LocalPlayer);
+            PowerButtonLight.SetActive(false);
+            audio.Play();
+        }
     }
 }

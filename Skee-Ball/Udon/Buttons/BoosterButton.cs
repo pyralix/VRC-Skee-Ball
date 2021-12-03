@@ -2,44 +2,47 @@
 using UdonSharp;
 using UnityEngine;
 
-public class BoosterButton : UdonSharpBehaviour
+namespace Pyralix.SkeeBall
 {
-    public GameObject BoosterTrigger;
-    public GameObject ButtonLight;
-    [SerializeField] private AudioSource OnSound;
-    [SerializeField] private AudioSource OffSound;
-    [UdonSynced] private bool BoosterLightOn;
-    public override void Interact()
+    public class BoosterButton : UdonSharpBehaviour
     {
-        if (!ButtonLight.activeSelf)
+        public GameObject BoosterTrigger;
+        public GameObject ButtonLight;
+        [SerializeField] private AudioSource OnSound;
+        [SerializeField] private AudioSource OffSound;
+        [UdonSynced] private bool BoosterLightOn;
+        public override void Interact()
         {
-            OnSound.Play();
-            BoosterLightOn = true;
+            if (!ButtonLight.activeSelf)
+            {
+                OnSound.Play();
+                BoosterLightOn = true;
+            }
+            else
+            {
+                OffSound.Play();
+                BoosterLightOn = false;
+            }
+            RequestSerialization();
+            BoosterTrigger.SetActive(!BoosterTrigger.activeSelf);
+            ButtonLight.SetActive(!ButtonLight.activeSelf);
         }
-        else
+
+        public override void OnDeserialization()
         {
-            OffSound.Play();
-            BoosterLightOn = false;
+            if (BoosterLightOn)
+            {
+                OnSound.Play();
+                ButtonLight.SetActive(true);
+                BoosterTrigger.SetActive(true);
+            }
+            else
+            {
+                OffSound.Play();
+                ButtonLight.SetActive(false);
+                BoosterTrigger.SetActive(false);
+            }
         }
-        RequestSerialization();
-        BoosterTrigger.SetActive(!BoosterTrigger.activeSelf);
-        ButtonLight.SetActive(!ButtonLight.activeSelf);
+
     }
-    
-    public override void OnDeserialization()
-    {
-        if (BoosterLightOn)
-        {
-            OnSound.Play();
-            ButtonLight.SetActive(true);
-            BoosterTrigger.SetActive(true);
-        }
-        else
-        {
-            OffSound.Play();
-            ButtonLight.SetActive(false);
-            BoosterTrigger.SetActive(false);
-        }
-    }
-    
 }

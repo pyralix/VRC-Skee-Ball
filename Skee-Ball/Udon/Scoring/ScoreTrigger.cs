@@ -2,14 +2,17 @@
 using UdonSharp;
 using UnityEngine;
 
-public class ScoreTrigger : UdonSharpBehaviour
+namespace Pyralix.SkeeBall
 {
-    [SerializeField] int Points;
-
-    [SerializeField] SkeeballMain SkeeballMain;
-
-    public void OnTriggerExit(Collider other)
+    public class ScoreTrigger : UdonSharpBehaviour
     {
-        SkeeballMain.ScorePoints(Points);
+        [SerializeField] int Points;
+
+        [SerializeField] SkeeballMain SkeeballMain;
+
+        public void OnTriggerExit(Collider other)
+        {
+            SkeeballMain.ScorePoints(Points);
+        }
     }
 }

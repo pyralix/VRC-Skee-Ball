@@ -3,17 +3,20 @@ using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
 
-public class BallBlockerReset : UdonSharpBehaviour
+namespace Pyralix.SkeeBall
 {
-    private int _ballCount;
-    [SerializeField] SkeeballMain SkeeballMain;
-    public void OnTriggerExit(Collider other)
+    public class BallBlockerReset : UdonSharpBehaviour
     {
-        _ballCount++;
-        if (Networking.IsOwner(gameObject))
+        private int _ballCount;
+        [SerializeField] SkeeballMain SkeeballMain;
+        public void OnTriggerExit(Collider other)
         {
-            SkeeballMain.IncrementBlockCount();
+            _ballCount++;
+            if (Networking.IsOwner(gameObject))
+            {
+                SkeeballMain.IncrementBlockCount();
+            }
         }
-    }
 
+    }
 }

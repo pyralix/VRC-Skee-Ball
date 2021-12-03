@@ -62,7 +62,7 @@ MonoBehaviour:
       Data: 4|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: SkeeballMain, Assembly-CSharp
+      Data: Pyralix.SkeeBall.SkeeballMain, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

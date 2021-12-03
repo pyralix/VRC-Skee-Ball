@@ -1290,7 +1290,7 @@ MonoBehaviour:
       Data: 72|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: Ball[], Assembly-CSharp
+      Data: Pyralix.SkeeBall.Ball[], Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 
@@ -1353,7 +1353,7 @@ MonoBehaviour:
       Data: 76|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: StartResetButton, Assembly-CSharp
+      Data: Pyralix.SkeeBall.StartResetButton, Assembly-CSharp
     - Name: 
       Entry: 8
       Data: 

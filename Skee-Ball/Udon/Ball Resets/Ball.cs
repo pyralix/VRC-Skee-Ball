@@ -4,60 +4,63 @@ using UnityEngine;
 using VRC.SDK3.Components;
 using VRC.SDKBase;
 
-public class Ball : UdonSharpBehaviour
+namespace Pyralix.SkeeBall
 {
-    private float speed;
-    private Rigidbody rigidBody;
-    public AudioSource BallRollingSoundSource;
-    public AudioSource BallCollisionSoundSource;
-
-    public void Start()
+    public class Ball : UdonSharpBehaviour
     {
-        rigidBody = (Rigidbody)this.GetComponent(typeof(Rigidbody));
-    }
+        private float speed;
+        private Rigidbody rigidBody;
+        public AudioSource BallRollingSoundSource;
+        public AudioSource BallCollisionSoundSource;
 
-    public void FixedUpdate()
-    {
-        speed = rigidBody.velocity.magnitude;
-    }
-
-    public void OnCollisionStay(Collision other)
-    {
-        if (!BallRollingSoundSource.isPlaying && speed >= 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
+        public void Start()
         {
-            BallRollingSoundSource.Play();
+            rigidBody = (Rigidbody)this.GetComponent(typeof(Rigidbody));
         }
-        else if (BallRollingSoundSource.isPlaying && speed < 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
-        {
-            BallRollingSoundSource.Pause();
-        }
-    }
 
-    public void OnCollisionExit(Collision other)
-    {
-        if (BallRollingSoundSource.isPlaying && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
+        public void FixedUpdate()
         {
-            BallRollingSoundSource.Pause();
+            speed = rigidBody.velocity.magnitude;
         }
-    }
 
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.name.Contains("SkeeBall-"))
+        public void OnCollisionStay(Collision other)
         {
-            BallCollisionSoundSource.Play();
-        }
-    }
-
-    public void Now()
-    {
-        if (Networking.IsOwner(gameObject))
-        {
-            VRCObjectSync obj = (VRCObjectSync)GetComponent(typeof(VRCObjectSync));
-            if (Utilities.IsValid(obj))
+            if (!BallRollingSoundSource.isPlaying && speed >= 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
             {
-                Networking.SetOwner(Networking.LocalPlayer, obj.gameObject);
-                obj.Respawn();
+                BallRollingSoundSource.Play();
+            }
+            else if (BallRollingSoundSource.isPlaying && speed < 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
+            {
+                BallRollingSoundSource.Pause();
+            }
+        }
+
+        public void OnCollisionExit(Collision other)
+        {
+            if (BallRollingSoundSource.isPlaying && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
+            {
+                BallRollingSoundSource.Pause();
+            }
+        }
+
+        public void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.name.Contains("SkeeBall-"))
+            {
+                BallCollisionSoundSource.Play();
+            }
+        }
+
+        public void Now()
+        {
+            if (Networking.IsOwner(gameObject))
+            {
+                VRCObjectSync obj = (VRCObjectSync)GetComponent(typeof(VRCObjectSync));
+                if (Utilities.IsValid(obj))
+                {
+                    Networking.SetOwner(Networking.LocalPlayer, obj.gameObject);
+                    obj.Respawn();
+                }
             }
         }
     }
