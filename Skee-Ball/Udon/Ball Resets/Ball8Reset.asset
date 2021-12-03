@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: Ball8Reset
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2a4f4e7ed566e0a47b856e34d925af72,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 880974965dafe544a9c6086daddfb475,
     type: 2}
   udonAssembly: 
   assemblyError: 
