@@ -50,7 +50,10 @@ public class SkeeballMain : UdonSharpBehaviour
     [UdonSynced] public bool GameOver;
     [UdonSynced] public bool GameActive;
     private int blockCount;
-    public string Version;
+
+    [SerializeField] private TextAsset VersionFile;
+    private string version;
+
     private void TogglePower()
     {
         if (Networking.IsOwner(gameObject))
@@ -205,7 +208,7 @@ public class SkeeballMain : UdonSharpBehaviour
         {
             BallBlockerOn();
             ResetAllBalls();
-            OwnerName = $"Skee-Ball {Version} by Pyralix";
+            OwnerName = $"Skee-Ball {version} by Pyralix";
             GameOver = false;
             GameActive = false;
             blockCount = 0;
@@ -234,7 +237,9 @@ public class SkeeballMain : UdonSharpBehaviour
     //Events
     public void Start()
     {
-        OwnerName = $"Skee-Ball {Version} by Pyralix";
+        version = VersionFile.text;
+
+        OwnerName = $"Skee-Ball {version} by Pyralix";
         OwnerText.GetComponent<Text>().text = $"{OwnerName}";
         RequestSerialization();
     }
