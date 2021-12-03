@@ -110,6 +110,7 @@ namespace Pyralix.SkeeBall
                 }
             }
         }
+
         public void ScorePoints(int points)
         {
             if (GameOver || !GameActive) return;
@@ -130,14 +131,23 @@ namespace Pyralix.SkeeBall
             ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
             ScoreText.GetComponent<Text>().text = $"{Score}";
         }
+
+        /// <summary>
+        /// RPC Target
+        /// </summary>
         public void PowerLightsOff()
         {
             Lights.SetActive(false);
         }
+
+        /// <summary>
+        /// RPC Target
+        /// </summary>
         public void PowerLightsOn()
         {
             Lights.SetActive(true);
         }
+
         private void ResetThrowCount()
         {
             ThrowCount = 0;
@@ -145,6 +155,7 @@ namespace Pyralix.SkeeBall
             ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
 
         }
+
         private void ResetScore()
         {
             Score = 0;
@@ -238,6 +249,7 @@ namespace Pyralix.SkeeBall
             HighScoreText.GetComponent<Text>().text = $"Highscore: {HighScore}";
             HighScoreNameText.GetComponent<Text>().text = $"{HighScoreName}";
         }
+
         public override void OnDeserialization()
         {
             OwnerText.GetComponent<Text>().text = $"{OwnerName}";
