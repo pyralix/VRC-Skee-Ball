@@ -35,4 +35,4 @@ Requirements:
 
 # Crediting
 
-I want to convert my time into enjoyment for others! So, I'm providing my prefabs for free. I hope that you'll decide to leave my name on the prefab, it helps others find it. But hey, once you have it it's all yours to edit to your heart's content! Feel free to support me at https://pyralix.booth.pm/
+I want to convert my time into enjoyment for others! To enrich the VR experience of others is my goal, so I'm providing my prefabs for free. I hope that you'll decide to leave my name on the prefab as a small way to provide credits. But hey, once you have it it's all yours to edit to your heart's content! If you'd like to support me you can at https://pyralix.booth.pm/
