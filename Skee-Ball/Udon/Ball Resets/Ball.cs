@@ -51,7 +51,7 @@ namespace Pyralix.SkeeBall
             }
         }
 
-        public void Now()
+        public void _Now()
         {
             if (Networking.IsOwner(gameObject))
             {

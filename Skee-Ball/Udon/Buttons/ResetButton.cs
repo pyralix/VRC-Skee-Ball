@@ -12,7 +12,7 @@ namespace Pyralix.SkeeBall
         public GameObject PowerButtonLight;
         public override void Interact()
         {
-            SkeeballMain.Reset(Networking.LocalPlayer);
+            SkeeballMain._Reset(Networking.LocalPlayer);
             PowerButtonLight.SetActive(false);
             audio.Play();
         }

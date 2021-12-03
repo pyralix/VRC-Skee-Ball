@@ -12,7 +12,7 @@ namespace Pyralix.SkeeBall
 
         public void OnTriggerExit(Collider other)
         {
-            SkeeballMain.ScorePoints(Points);
+            SkeeballMain._ScorePoints(Points);
         }
     }
 }

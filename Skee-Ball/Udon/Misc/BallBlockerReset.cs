@@ -14,7 +14,7 @@ namespace Pyralix.SkeeBall
             _ballCount++;
             if (Networking.IsOwner(gameObject))
             {
-                SkeeballMain.IncrementBlockCount();
+                SkeeballMain._IncrementBlockCount();
             }
         }
 

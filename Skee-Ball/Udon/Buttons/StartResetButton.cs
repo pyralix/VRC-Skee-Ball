@@ -30,10 +30,10 @@ namespace Pyralix.SkeeBall
                 Button.SetActive(true);
             }
             RequestSerialization();
-            SkeeballMain.SetGameOwnerAndTogglePower(Networking.LocalPlayer);
+            SkeeballMain._SetGameOwnerAndTogglePower(Networking.LocalPlayer);
         }
 
-        public void TurnOffButtonLight()
+        public void _TurnOffButtonLight()
         {
             Button.SetActive(false);
             ButtonLightOn = false;

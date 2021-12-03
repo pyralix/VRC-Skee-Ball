@@ -70,7 +70,7 @@ namespace Pyralix.SkeeBall
                     PowerLightsOn();
                     BallBlockerOff();
                     ResetThrowCount();
-                    ResetBlockerCount();
+                    _ResetBlockerCount();
                 }
                 else if (!GameOver && GameActive) //Ending a game in progress
                 {
@@ -81,7 +81,7 @@ namespace Pyralix.SkeeBall
                     PowerLightsOff();
                     BallBlockerOn();
                     ResetThrowCount();
-                    ResetBlockerCount();
+                    _ResetBlockerCount();
                 }
                 else if (GameOver && !GameActive) //A game was finished either by timeout or all the balls were thrown
                 {
@@ -98,10 +98,10 @@ namespace Pyralix.SkeeBall
                     RequestSerialization();
                     //Lights start in the inactive state, the ballblocker starts in the active state
                     SendCustomNetworkEvent(NetworkEventTarget.All, "PowerLightsOff");
-                    StartResetButton.TurnOffButtonLight();
+                    StartResetButton._TurnOffButtonLight();
                     BallBlockerOn();
                     ResetThrowCount();
-                    ResetBlockerCount();
+                    _ResetBlockerCount();
                 }
                 else if (GameOver && GameActive)//The game cannot be active and over at the same time, reset everything because something strange happened
                 {
@@ -111,7 +111,7 @@ namespace Pyralix.SkeeBall
             }
         }
 
-        public void ScorePoints(int points)
+        public void _ScorePoints(int points)
         {
             if (GameOver || !GameActive) return;
 
@@ -164,7 +164,7 @@ namespace Pyralix.SkeeBall
         }
 
         //Interop Methods
-        public void SetGameOwnerAndTogglePower(VRCPlayerApi player)
+        public void _SetGameOwnerAndTogglePower(VRCPlayerApi player)
         {
             OwnerName = player.displayName;
             RequestSerialization();
@@ -184,7 +184,7 @@ namespace Pyralix.SkeeBall
             TogglePower();
         }
 
-        public void SetGameOwner(VRCPlayerApi player)
+        public void _SetGameOwner(VRCPlayerApi player)
         {
             Networking.SetOwner(player, gameObject);
             Networking.SetOwner(player, BallBlocker);
@@ -200,9 +200,9 @@ namespace Pyralix.SkeeBall
             }
         }
 
-        public void Reset(VRCPlayerApi player)
+        public void _Reset(VRCPlayerApi player)
         {
-            SetGameOwner(player);
+            _SetGameOwner(player);
 
             if (Networking.IsOwner(gameObject))
             {
@@ -225,7 +225,7 @@ namespace Pyralix.SkeeBall
         {
             foreach (Ball ball in balls)
             {
-                ball.Now();
+                ball._Now();
             }
         }
 
@@ -271,7 +271,7 @@ namespace Pyralix.SkeeBall
             BallBlocker.SetActive(false);
         }
 
-        public void IncrementBlockCount()
+        public void _IncrementBlockCount()
         {
             if (Networking.IsOwner(gameObject))
             {
@@ -279,12 +279,12 @@ namespace Pyralix.SkeeBall
                 if (blockCount >= 9)
                 {
                     BallBlockerOn();
-                    ResetBlockerCount();
+                    _ResetBlockerCount();
                 }
             }
         }
 
-        public void ResetBlockerCount()
+        public void _ResetBlockerCount()
         {
             blockCount = 0;
         }
