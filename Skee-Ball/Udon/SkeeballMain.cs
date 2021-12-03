@@ -17,20 +17,11 @@ namespace Pyralix.SkeeBall
         public GameObject HighScoreText;
         public GameObject HighScoreNameText;
         public GameObject OwnerText;
-        public GameObject Ball1;
-        public GameObject Ball2;
-        public GameObject Ball3;
-        public GameObject Ball4;
-        public GameObject Ball5;
-        public GameObject Ball6;
-        public GameObject Ball7;
-        public GameObject Ball8;
-        public GameObject Ball9;
-        public GameObject Ball10;
         public AudioSource Speaker;
         public AudioClip HighScoreClip;
         [SerializeField] private Transform BallStorage;
         private Ball[] balls;
+        private GameObject[] ballGameObjects;
         [SerializeField] private StartResetButton StartResetButton;
         [UdonSynced] public int HighScore;
         [UdonSynced] public string HighScoreName;
@@ -154,16 +145,10 @@ namespace Pyralix.SkeeBall
             Networking.SetOwner(player, ScoreText);
             Networking.SetOwner(player, OwnerText);
             Networking.SetOwner(player, HighScoreText);
-            Networking.SetOwner(player, Ball1);
-            Networking.SetOwner(player, Ball2);
-            Networking.SetOwner(player, Ball3);
-            Networking.SetOwner(player, Ball4);
-            Networking.SetOwner(player, Ball5);
-            Networking.SetOwner(player, Ball6);
-            Networking.SetOwner(player, Ball7);
-            Networking.SetOwner(player, Ball8);
-            Networking.SetOwner(player, Ball9);
-            Networking.SetOwner(player, Ball10);
+            foreach(GameObject go in ballGameObjects)
+            {
+                Networking.SetOwner(player, go);
+            }
             OwnerText.GetComponent<Text>().text = $"Player: {OwnerName}";
             TogglePower();
         }
@@ -178,16 +163,10 @@ namespace Pyralix.SkeeBall
             Networking.SetOwner(player, ScoreText);
             Networking.SetOwner(player, OwnerText);
             Networking.SetOwner(player, HighScoreText);
-            Networking.SetOwner(player, Ball1);
-            Networking.SetOwner(player, Ball2);
-            Networking.SetOwner(player, Ball3);
-            Networking.SetOwner(player, Ball4);
-            Networking.SetOwner(player, Ball5);
-            Networking.SetOwner(player, Ball6);
-            Networking.SetOwner(player, Ball7);
-            Networking.SetOwner(player, Ball8);
-            Networking.SetOwner(player, Ball9);
-            Networking.SetOwner(player, Ball10);
+            foreach (GameObject go in ballGameObjects)
+            {
+                Networking.SetOwner(player, go);
+            }
         }
 
         public void Reset(VRCPlayerApi player)
@@ -225,6 +204,15 @@ namespace Pyralix.SkeeBall
             version = VersionFile.text;
 
             balls = BallStorage.GetComponentsInChildren<Ball>();
+
+            int ballCount = balls.Length;
+
+            ballGameObjects = new GameObject[ballCount];
+
+            for(int i = 0; i < ballCount; i++)
+            {
+                ballGameObjects[i] = balls[i].gameObject;
+            }
 
             OwnerName = $"Skee-Ball {version} by Pyralix";
             OwnerText.GetComponent<Text>().text = $"{OwnerName}";
