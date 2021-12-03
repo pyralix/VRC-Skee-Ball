@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: Ball9Reset
+  m_Name: Ball
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: c3c7f0870e84f734586a4b9e2735e469,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 210bf5040f5a3a5428fb7409a7277ac3,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 2bcb1f8ede6656f4ab622417c28b287e, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: 780091f4c9d514146adefd58aab37ab2, type: 3}
   behaviourSyncMode: 0
   behaviourIDHeapVarName: __refl_const_intnl_udonTypeID
   compileErrors: []

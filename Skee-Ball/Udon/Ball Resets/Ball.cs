@@ -4,7 +4,7 @@ using UnityEngine;
 using VRC.SDK3.Components;
 using VRC.SDKBase;
 
-public class Ball8Reset : UdonSharpBehaviour
+public class Ball : UdonSharpBehaviour
 {
     private float speed;
     private Rigidbody rigidBody;

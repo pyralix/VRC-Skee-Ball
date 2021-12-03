@@ -27,16 +27,8 @@ public class SkeeballMain : UdonSharpBehaviour
     public GameObject Ball10;
     public AudioSource Speaker;
     public AudioClip HighScoreClip;
-    [SerializeField] private Ball01Reset Ball1Reset;
-    [SerializeField] private Ball2Reset Ball2Reset;
-    [SerializeField] private Ball3Reset Ball3Reset;
-    [SerializeField] private Ball4Reset Ball4Reset;
-    [SerializeField] private Ball05Reset Ball5Reset;
-    [SerializeField] private Ball6Reset Ball6Reset;
-    [SerializeField] private Ball7Reset Ball7Reset;
-    [SerializeField] private Ball8Reset Ball8Reset;
-    [SerializeField] private Ball9Reset Ball9Reset;
-    [SerializeField] private Ball10Reset Ball10Reset;
+    [SerializeField] private Transform BallStorage;
+    private Ball[] balls;
     [SerializeField] private StartResetButton StartResetButton;
     [UdonSynced] public int HighScore;
     [UdonSynced] public string HighScoreName;
@@ -219,21 +211,18 @@ public class SkeeballMain : UdonSharpBehaviour
 
     private void ResetAllBalls()
     {
-        Ball1Reset.Now();
-        Ball2Reset.Now();
-        Ball3Reset.Now();
-        Ball4Reset.Now();
-        Ball5Reset.Now();
-        Ball6Reset.Now();
-        Ball7Reset.Now();
-        Ball8Reset.Now();
-        Ball9Reset.Now();
-        Ball10Reset.Now();
+        foreach(Ball ball in balls)
+        {
+            ball.Now();
+        }
     }
+
     //Events
     public void Start()
     {
         version = VersionFile.text;
+
+        balls = BallStorage.GetComponentsInChildren<Ball>();
 
         OwnerName = $"Skee-Ball {version} by Pyralix";
         OwnerText.GetComponent<Text>().text = $"{OwnerName}";
