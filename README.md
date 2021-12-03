@@ -1,4 +1,4 @@
-# VRC-Skee-Ball
+# VRC Skee-Ball
 
 <p align="center"><i>Many thanks to Theycallhimcake, Burnadette, and Coffepot for the inspiration to create in VRChat, and to the udon-questions channel for helping me fumble through learning Unity.</i></p>
 
@@ -32,3 +32,7 @@ Requirements:
 2. Import Skee-ball v1.3.unitypackage into your project that already has the SDK and UdonSharp loaded.
 3. Drag prefab in the Skee-Ball v#.# folder into your world or open the example scene.
 4. Consider disabling the audio sources on the balls if you have more than 1 machine as they use up many audio slots due to being not well optimized yet.
+
+# Crediting
+
+I want to convert my time into enjoyment for others! So, I'm providing my prefabs for free. I hope that you'll decide to leave my name on the prefab, it helps others find it. But hey, once you have it it's all yours to edit to your heart's content! Feel free to support me at https://pyralix.booth.pm/
