@@ -1,11 +1,8 @@
 ﻿
-using System;
 using UdonSharp;
 using UnityEngine;
-using UnityEngine.VFX;
 using VRC.SDK3.Components;
 using VRC.SDKBase;
-using VRC.Udon;
 
 public class Ball10Reset : UdonSharpBehaviour
 {

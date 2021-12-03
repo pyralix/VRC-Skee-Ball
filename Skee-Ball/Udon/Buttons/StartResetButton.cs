@@ -1,10 +1,7 @@
-﻿using System.Threading;
+﻿
 using UdonSharp;
 using UnityEngine;
-using UnityEngine.UI;
 using VRC.SDKBase;
-using VRC.Udon;
-using VRC.Udon.Common.Interfaces;
 
 public class StartResetButton : UdonSharpBehaviour
 {

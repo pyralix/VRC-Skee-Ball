@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using UdonSharp;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
-using VRC.SDK3.Components;
 using VRC.SDKBase;
-using VRC.Udon;
 using VRC.Udon.Common.Interfaces;
 
 public class SkeeballMain : UdonSharpBehaviour
