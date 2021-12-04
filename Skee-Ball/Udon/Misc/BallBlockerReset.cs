@@ -7,9 +7,11 @@ namespace Pyralix.SkeeBall
 {
     public class BallBlockerReset : UdonSharpBehaviour
     {
+        [SerializeField] private SkeeballMain SkeeballMain;
+
         private int _ballCount;
-        [SerializeField] SkeeballMain SkeeballMain;
-        public void OnTriggerExit(Collider other)
+        
+        private void OnTriggerExit(Collider other)
         {
             _ballCount++;
             if (Networking.IsOwner(gameObject))

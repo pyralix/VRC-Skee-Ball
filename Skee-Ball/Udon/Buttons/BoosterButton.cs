@@ -6,11 +6,12 @@ namespace Pyralix.SkeeBall
 {
     public class BoosterButton : UdonSharpBehaviour
     {
-        public GameObject BoosterTrigger;
-        public GameObject ButtonLight;
+        [SerializeField] private GameObject BoosterTrigger;
+        [SerializeField] private GameObject ButtonLight;
         [SerializeField] private AudioSource OnSound;
         [SerializeField] private AudioSource OffSound;
         [UdonSynced] private bool BoosterLightOn;
+
         public override void Interact()
         {
             if (!ButtonLight.activeSelf)

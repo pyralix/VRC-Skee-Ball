@@ -8,22 +8,23 @@ namespace Pyralix.SkeeBall
 {
     public class Ball : UdonSharpBehaviour
     {
+        [SerializeField] private AudioSource BallRollingSoundSource;
+        [SerializeField] private AudioSource BallCollisionSoundSource;
+
         private float speed;
         private Rigidbody rigidBody;
-        public AudioSource BallRollingSoundSource;
-        public AudioSource BallCollisionSoundSource;
 
-        public void Start()
+        private void Start()
         {
             rigidBody = (Rigidbody)this.GetComponent(typeof(Rigidbody));
         }
 
-        public void FixedUpdate()
+        private void FixedUpdate()
         {
             speed = rigidBody.velocity.magnitude;
         }
 
-        public void OnCollisionStay(Collision other)
+        private void OnCollisionStay(Collision other)
         {
             if (!BallRollingSoundSource.isPlaying && speed >= 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
             {
@@ -35,7 +36,7 @@ namespace Pyralix.SkeeBall
             }
         }
 
-        public void OnCollisionExit(Collision other)
+        private void OnCollisionExit(Collision other)
         {
             if (BallRollingSoundSource.isPlaying && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
             {
@@ -43,7 +44,7 @@ namespace Pyralix.SkeeBall
             }
         }
 
-        public void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.name.Contains("SkeeBall-"))
             {

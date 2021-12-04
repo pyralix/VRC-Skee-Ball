@@ -9,27 +9,27 @@ namespace Pyralix.SkeeBall
 {
     public class SkeeballMain : UdonSharpBehaviour
     {
-        public GameObject Lights;
-        public GameObject BallBlocker;
-        public GameObject PowerButton;
-        public GameObject ThrowCountText;
-        public GameObject ScoreText;
-        public GameObject HighScoreText;
-        public GameObject HighScoreNameText;
-        public GameObject OwnerText;
-        public AudioSource Speaker;
-        public AudioClip HighScoreClip;
+        [SerializeField] private GameObject Lights;
+        [SerializeField] private GameObject BallBlocker;
+        [SerializeField] private GameObject PowerButton;
+        [SerializeField] private GameObject ThrowCountText;
+        [SerializeField] private GameObject ScoreText;
+        [SerializeField] private GameObject HighScoreText;
+        [SerializeField] private GameObject HighScoreNameText;
+        [SerializeField] private GameObject OwnerText;
+        [SerializeField] private AudioSource Speaker;
+        [SerializeField] private AudioClip HighScoreClip;
         [SerializeField] private Transform BallStorage;
         private Ball[] balls;
         private GameObject[] ballGameObjects;
         [SerializeField] private StartResetButton StartResetButton;
-        [UdonSynced] public int HighScore;
-        [UdonSynced] public string HighScoreName;
-        [UdonSynced] public string OwnerName;
-        [UdonSynced] public int Score;
-        [UdonSynced] public int ThrowCount;
-        [UdonSynced] public bool GameOver;
-        [UdonSynced] public bool GameActive;
+        [UdonSynced] private int highScore;
+        [UdonSynced] private string highScoreName;
+        [UdonSynced] private string ownerName;
+        [UdonSynced] private int score;
+        [UdonSynced] private int throwCount;
+        [UdonSynced] private bool gameOver;
+        [UdonSynced] private bool gameActive;
         private int blockCount;
 
         [SerializeField] private TextAsset VersionFile;
@@ -50,8 +50,8 @@ namespace Pyralix.SkeeBall
                 ballGameObjects[i] = balls[i].gameObject;
             }
 
-            OwnerName = $"Skee-Ball {version} by Pyralix";
-            OwnerText.GetComponent<Text>().text = $"{OwnerName}";
+            ownerName = $"Skee-Ball {version} by Pyralix";
+            OwnerText.GetComponent<Text>().text = $"{ownerName}";
             RequestSerialization();
         }
 
@@ -59,10 +59,10 @@ namespace Pyralix.SkeeBall
         {
             if (Networking.IsOwner(gameObject))
             {
-                if (!GameOver && !GameActive) //Starting a new game
+                if (!gameOver && !gameActive) //Starting a new game
                 {
-                    GameOver = false;
-                    GameActive = true;
+                    gameOver = false;
+                    gameActive = true;
                     blockCount = 0;
                     ResetScore();
                     RequestSerialization();
@@ -70,29 +70,29 @@ namespace Pyralix.SkeeBall
                     PowerLightsOn();
                     BallBlockerOff();
                     ResetThrowCount();
-                    _ResetBlockerCount();
+                    ResetBlockerCount();
                 }
-                else if (!GameOver && GameActive) //Ending a game in progress
+                else if (!gameOver && gameActive) //Ending a game in progress
                 {
-                    GameOver = false;
-                    GameActive = false;
+                    gameOver = false;
+                    gameActive = false;
                     RequestSerialization();
                     //Lights start in the inactive state, the ballblocker starts in the active state
                     PowerLightsOff();
                     BallBlockerOn();
                     ResetThrowCount();
-                    _ResetBlockerCount();
+                    ResetBlockerCount();
                 }
-                else if (GameOver && !GameActive) //A game was finished either by timeout or all the balls were thrown
+                else if (gameOver && !gameActive) //A game was finished either by timeout or all the balls were thrown
                 {
-                    GameOver = false;
-                    GameActive = false;
-                    if (Score > HighScore)
+                    gameOver = false;
+                    gameActive = false;
+                    if (score > highScore)
                     {
-                        HighScore = Score;
-                        HighScoreName = OwnerName;
-                        HighScoreText.GetComponent<Text>().text = $"Highscore: {HighScore}";
-                        HighScoreNameText.GetComponent<Text>().text = $"{HighScoreName}";
+                        highScore = score;
+                        highScoreName = ownerName;
+                        HighScoreText.GetComponent<Text>().text = $"Highscore: {highScore}";
+                        HighScoreNameText.GetComponent<Text>().text = $"{highScoreName}";
                         Speaker.PlayOneShot(HighScoreClip, 1.0f);
                     }
                     RequestSerialization();
@@ -101,9 +101,9 @@ namespace Pyralix.SkeeBall
                     StartResetButton._TurnOffButtonLight();
                     BallBlockerOn();
                     ResetThrowCount();
-                    _ResetBlockerCount();
+                    ResetBlockerCount();
                 }
-                else if (GameOver && GameActive)//The game cannot be active and over at the same time, reset everything because something strange happened
+                else if (gameOver && gameActive)//The game cannot be active and over at the same time, reset everything because something strange happened
                 {
                     //TODO: Reset all the things
                     Debug.Log("Somehow the game is over and still active... You're drunk, go home.");
@@ -113,23 +113,23 @@ namespace Pyralix.SkeeBall
 
         public void _ScorePoints(int points)
         {
-            if (GameOver || !GameActive) return;
+            if (gameOver || !gameActive) return;
 
             if (Networking.IsOwner(gameObject))
             {
-                Score += points;
-                ThrowCount++;
-                if (ThrowCount >= 9) //Threw all balls TODO: Also a countdown timer
+                score += points;
+                throwCount++;
+                if (throwCount >= 9) //Threw all balls TODO: Also a countdown timer
                 {
-                    GameOver = true;
-                    GameActive = false;
+                    gameOver = true;
+                    gameActive = false;
                     TogglePower();
                 }
                 RequestSerialization();
             }
 
-            ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
-            ScoreText.GetComponent<Text>().text = $"{Score}";
+            ThrowCountText.GetComponent<Text>().text = $"Ball: {throwCount}";
+            ScoreText.GetComponent<Text>().text = $"{score}";
         }
 
         /// <summary>
@@ -150,23 +150,23 @@ namespace Pyralix.SkeeBall
 
         private void ResetThrowCount()
         {
-            ThrowCount = 0;
+            throwCount = 0;
             RequestSerialization();
-            ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
+            ThrowCountText.GetComponent<Text>().text = $"Ball: {throwCount}";
 
         }
 
         private void ResetScore()
         {
-            Score = 0;
+            score = 0;
             RequestSerialization();
-            ScoreText.GetComponent<Text>().text = $"{Score}";
+            ScoreText.GetComponent<Text>().text = $"{score}";
         }
 
         //Interop Methods
         public void _SetGameOwnerAndTogglePower(VRCPlayerApi player)
         {
-            OwnerName = player.displayName;
+            ownerName = player.displayName;
             RequestSerialization();
             Networking.SetOwner(player, gameObject);
             Networking.SetOwner(player, BallBlocker);
@@ -180,11 +180,11 @@ namespace Pyralix.SkeeBall
             {
                 Networking.SetOwner(player, go);
             }
-            OwnerText.GetComponent<Text>().text = $"Player: {OwnerName}";
+            OwnerText.GetComponent<Text>().text = $"Player: {ownerName}";
             TogglePower();
         }
 
-        public void _SetGameOwner(VRCPlayerApi player)
+        private void SetGameOwner(VRCPlayerApi player)
         {
             Networking.SetOwner(player, gameObject);
             Networking.SetOwner(player, BallBlocker);
@@ -202,17 +202,17 @@ namespace Pyralix.SkeeBall
 
         public void _Reset(VRCPlayerApi player)
         {
-            _SetGameOwner(player);
+            SetGameOwner(player);
 
             if (Networking.IsOwner(gameObject))
             {
                 BallBlockerOn();
                 ResetAllBalls();
-                OwnerName = $"Skee-Ball {version} by Pyralix";
-                GameOver = false;
-                GameActive = false;
+                ownerName = $"Skee-Ball {version} by Pyralix";
+                gameOver = false;
+                gameActive = false;
                 blockCount = 0;
-                OwnerText.GetComponent<Text>().text = $"{OwnerName}";
+                OwnerText.GetComponent<Text>().text = $"{ownerName}";
                 ResetThrowCount();
                 ResetScore();
                 PowerLightsOff();
@@ -243,21 +243,21 @@ namespace Pyralix.SkeeBall
                     SendCustomNetworkEvent(NetworkEventTarget.All, "PowerLightsOff");
                 }
             }
-            OwnerText.GetComponent<Text>().text = $"{OwnerName}";
-            ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
-            ScoreText.GetComponent<Text>().text = $"{Score}";
-            HighScoreText.GetComponent<Text>().text = $"Highscore: {HighScore}";
-            HighScoreNameText.GetComponent<Text>().text = $"{HighScoreName}";
+            OwnerText.GetComponent<Text>().text = $"{ownerName}";
+            ThrowCountText.GetComponent<Text>().text = $"Ball: {throwCount}";
+            ScoreText.GetComponent<Text>().text = $"{score}";
+            HighScoreText.GetComponent<Text>().text = $"Highscore: {highScore}";
+            HighScoreNameText.GetComponent<Text>().text = $"{highScoreName}";
         }
 
         public override void OnDeserialization()
         {
-            OwnerText.GetComponent<Text>().text = $"{OwnerName}";
-            ThrowCountText.GetComponent<Text>().text = $"Ball: {ThrowCount}";
-            ScoreText.GetComponent<Text>().text = $"{Score}";
-            HighScoreText.GetComponent<Text>().text = $"Highscore: {HighScore}";
-            HighScoreNameText.GetComponent<Text>().text = $"{HighScoreName}";
-            Lights.SetActive(GameActive);
+            OwnerText.GetComponent<Text>().text = $"{ownerName}";
+            ThrowCountText.GetComponent<Text>().text = $"Ball: {throwCount}";
+            ScoreText.GetComponent<Text>().text = $"{score}";
+            HighScoreText.GetComponent<Text>().text = $"Highscore: {highScore}";
+            HighScoreNameText.GetComponent<Text>().text = $"{highScoreName}";
+            Lights.SetActive(gameActive);
         }
 
         //BallBlocker
@@ -279,12 +279,12 @@ namespace Pyralix.SkeeBall
                 if (blockCount >= 9)
                 {
                     BallBlockerOn();
-                    _ResetBlockerCount();
+                    ResetBlockerCount();
                 }
             }
         }
 
-        public void _ResetBlockerCount()
+        private void ResetBlockerCount()
         {
             blockCount = 0;
         }

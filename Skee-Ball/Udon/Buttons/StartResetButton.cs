@@ -10,10 +10,10 @@ namespace Pyralix.SkeeBall
         [SerializeField] SkeeballMain SkeeballMain;
         [SerializeField] private AudioSource OnSound;
         [SerializeField] private AudioSource OffSound;
-        public GameObject PowerLights;
-        public GameObject Button;
-        [UdonSynced]
-        private bool ButtonLightOn;
+        [SerializeField] private GameObject PowerLights;
+        [SerializeField] private GameObject Button;
+
+        [UdonSynced] private bool ButtonLightOn;
 
         public override void Interact()
         {

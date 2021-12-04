@@ -7,9 +7,10 @@ namespace Pyralix.SkeeBall
 {
     public class ResetButton : UdonSharpBehaviour
     {
-        [SerializeField] SkeeballMain SkeeballMain;
+        [SerializeField] private SkeeballMain SkeeballMain;
         [SerializeField] private AudioSource audio;
-        public GameObject PowerButtonLight;
+        [SerializeField] private GameObject PowerButtonLight;
+
         public override void Interact()
         {
             SkeeballMain._Reset(Networking.LocalPlayer);
