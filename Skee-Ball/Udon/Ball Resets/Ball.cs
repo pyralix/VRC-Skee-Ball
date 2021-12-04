@@ -6,6 +6,7 @@ using VRC.SDKBase;
 
 namespace Pyralix.SkeeBall
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Ball : UdonSharpBehaviour
     {
         [SerializeField] private AudioSource BallRollingSoundSource;

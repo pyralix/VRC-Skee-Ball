@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Pyralix.SkeeBall
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ScoreTrigger : UdonSharpBehaviour
     {
         [SerializeField] private int Points;

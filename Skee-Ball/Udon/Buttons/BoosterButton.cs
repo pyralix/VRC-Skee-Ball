@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Pyralix.SkeeBall
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class BoosterButton : UdonSharpBehaviour
     {
         [SerializeField] private GameObject BoosterTrigger;

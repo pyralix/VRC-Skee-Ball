@@ -7,6 +7,7 @@ using VRC.Udon.Common.Interfaces;
 
 namespace Pyralix.SkeeBall
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class SkeeballMain : UdonSharpBehaviour
     {
         [SerializeField] private GameObject Lights;

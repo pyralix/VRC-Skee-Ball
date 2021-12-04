@@ -5,6 +5,7 @@ using VRC.SDKBase;
 
 namespace Pyralix.SkeeBall
 {
+    [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ResetButton : UdonSharpBehaviour
     {
         [SerializeField] private SkeeballMain SkeeballMain;
