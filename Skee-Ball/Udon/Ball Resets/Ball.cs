@@ -20,7 +20,7 @@ namespace Pyralix.SkeeBall
         private const string
             HiddenPrefix = "Hidden",
             ChassisPrefix = "Chassis",
-            SkeeBallPrefix = "SkeeBall-";
+            BallPrefix = "Ball";
 
         private void Start()
         {
@@ -46,17 +46,9 @@ namespace Pyralix.SkeeBall
 
         private void OnCollisionExit(Collision other)
         {
-            if (Utilities.IsValid(other) && other != null)
-            {
-                string otherName = other.gameObject.name;
+            isColliding = false;
 
-                if (otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))
-                {
-                    isColliding = false;
-
-                    BallRollingSoundSource.Pause();
-                }
-            }
+            BallRollingSoundSource.Pause();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -65,9 +57,9 @@ namespace Pyralix.SkeeBall
             {
                 string otherName = other.gameObject.name;
 
-                if (otherName.Contains(SkeeBallPrefix))
+                if (otherName.Contains(BallPrefix))
                 {
-                    BallCollisionSoundSource.PlayOneShot(collisionClip, Mathf.Clamp01(other.relativeVelocity.magnitude / 10f));
+                    BallCollisionSoundSource.PlayOneShot(collisionClip, Mathf.Clamp01(other.relativeVelocity.magnitude / 2f));
                 }
 
                 if(otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))

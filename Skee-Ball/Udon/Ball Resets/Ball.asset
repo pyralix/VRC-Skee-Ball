@@ -544,7 +544,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 1
-      Data: SkeeBallPrefix
+      Data: BallPrefix
     - Name: $v
       Entry: 7
       Data: 33|UdonSharp.Compiler.FieldDefinition, UdonSharp.Editor
@@ -565,10 +565,10 @@ MonoBehaviour:
       Data: SystemString
     - Name: symbolOriginalName
       Entry: 1
-      Data: SkeeBallPrefix
+      Data: BallPrefix
     - Name: symbolUniqueName
       Entry: 1
-      Data: SkeeBallPrefix
+      Data: BallPrefix
     - Name: symbolDefaultValue
       Entry: 6
       Data: 
