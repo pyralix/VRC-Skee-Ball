@@ -1,6 +1,6 @@
 # VRC Skee-Ball
 
-<p align="center"><i>Many thanks to Theycallhimcake, Burnadette, and Coffepot for the inspiration to create in VRChat, and to the udon-questions channel for helping me fumble through learning Unity.</i></p>
+<p align="center"><i>Many thanks to Theycallhimcake, Burnadette, and Coffepot for the inspiration to create in VRChat, to Varneon for their expertise refactoring and optimizing, and to the udon-questions channel for helping me fumble through learning Unity.</i></p>
 
 ![Header](https://raw.githubusercontent.com/pyralix/VRC-Skee-Ball/main/.github/images/skeeball.PNG)
 
