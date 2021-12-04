@@ -4388,7 +4388,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741081956475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4576,7 +4576,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741819859744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4764,7 +4764,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229740469251994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229740588941066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229740863340661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5328,7 +5328,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741138229556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,7 +5516,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741645211668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5704,7 +5704,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741070640643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5892,7 +5892,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229740804310553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6080,7 +6080,7 @@ MonoBehaviour:
   m_Script: {fileID: -1783056023, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AllowCollisionOwnershipTransfer: 1
+  AllowCollisionOwnershipTransfer: 0
 --- !u!114 &6081229741010375206
 MonoBehaviour:
   m_ObjectHideFlags: 0
