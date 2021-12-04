@@ -12,58 +12,79 @@ namespace Pyralix.SkeeBall
         [SerializeField] private AudioSource BallRollingSoundSource;
         [SerializeField] private AudioSource BallCollisionSoundSource;
 
-        private float speed;
         private Rigidbody rigidBody;
+        private VRCObjectSync objectSync;
+        private bool isColliding;
+
+        private const string
+            HiddenPrefix = "Hidden",
+            ChassisPrefix = "Chassis",
+            SkeeBallPrefix = "SkeeBall-";
 
         private void Start()
         {
-            rigidBody = (Rigidbody)this.GetComponent(typeof(Rigidbody));
+            rigidBody = (Rigidbody)GetComponent(typeof(Rigidbody));
+            objectSync = (VRCObjectSync)GetComponent(typeof(VRCObjectSync));
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
-            speed = rigidBody.velocity.magnitude;
-        }
+            if (isColliding)
+            {
+                BallRollingSoundSource.volume = Mathf.Clamp01(rigidBody.velocity.magnitude);
 
-        private void OnCollisionStay(Collision other)
-        {
-            if (!BallRollingSoundSource.isPlaying && speed >= 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
-            {
-                BallRollingSoundSource.Play();
-            }
-            else if (BallRollingSoundSource.isPlaying && speed < 0.1f && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
-            {
-                BallRollingSoundSource.Pause();
+                if (rigidBody.IsSleeping())
+                {
+                    BallRollingSoundSource.Pause();
+                    isColliding = false;
+                }
             }
         }
 
         private void OnCollisionExit(Collision other)
         {
-            if (BallRollingSoundSource.isPlaying && (other.gameObject.name.Contains("Hidden") || other.gameObject.name.Contains("Chassis")))
+            if (Utilities.IsValid(other) && other != null)
             {
-                BallRollingSoundSource.Pause();
+                string otherName = other.gameObject.name;
+
+                if (otherName.Contains(SkeeBallPrefix))
+                {
+                    BallCollisionSoundSource.Play();
+                }
+
+                if (otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))
+                {
+                    isColliding = false;
+
+                    BallRollingSoundSource.Pause();
+                }
             }
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            if (other.gameObject.name.Contains("SkeeBall-"))
+            if(Utilities.IsValid(other) && other != null)
             {
-                BallCollisionSoundSource.Play();
+                string otherName = other.gameObject.name;
+
+                if (otherName.Contains(SkeeBallPrefix))
+                {
+                    BallCollisionSoundSource.Play();
+                }
+
+                if(otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))
+                {
+                    isColliding = true;
+
+                    BallRollingSoundSource.Play();
+                }
             }
         }
 
-        public void _Now()
+        public void _ResetBall()
         {
-            if (Networking.IsOwner(gameObject))
-            {
-                VRCObjectSync obj = (VRCObjectSync)GetComponent(typeof(VRCObjectSync));
-                if (Utilities.IsValid(obj))
-                {
-                    Networking.SetOwner(Networking.LocalPlayer, obj.gameObject);
-                    obj.Respawn();
-                }
-            }
+            Networking.SetOwner(Networking.LocalPlayer, objectSync.gameObject);
+            objectSync.Respawn();
         }
     }
 }

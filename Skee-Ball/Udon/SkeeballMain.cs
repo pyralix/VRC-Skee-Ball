@@ -226,7 +226,7 @@ namespace Pyralix.SkeeBall
         {
             foreach (Ball ball in balls)
             {
-                ball._Now();
+                ball._ResetBall();
             }
         }
 
