@@ -12,6 +12,7 @@ namespace Pyralix.SkeeBall
         [SerializeField] private AudioSource BallRollingSoundSource;
         [SerializeField] private AudioSource BallCollisionSoundSource;
 
+        private AudioClip collisionClip;
         private Rigidbody rigidBody;
         private VRCObjectSync objectSync;
         private bool isColliding;
@@ -25,6 +26,8 @@ namespace Pyralix.SkeeBall
         {
             rigidBody = (Rigidbody)GetComponent(typeof(Rigidbody));
             objectSync = (VRCObjectSync)GetComponent(typeof(VRCObjectSync));
+
+            collisionClip = BallCollisionSoundSource.clip;
         }
 
         private void Update()
@@ -47,11 +50,6 @@ namespace Pyralix.SkeeBall
             {
                 string otherName = other.gameObject.name;
 
-                if (otherName.Contains(SkeeBallPrefix))
-                {
-                    BallCollisionSoundSource.Play();
-                }
-
                 if (otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))
                 {
                     isColliding = false;
@@ -69,7 +67,7 @@ namespace Pyralix.SkeeBall
 
                 if (otherName.Contains(SkeeBallPrefix))
                 {
-                    BallCollisionSoundSource.Play();
+                    BallCollisionSoundSource.PlayOneShot(collisionClip, Mathf.Clamp01(other.relativeVelocity.magnitude / 10f));
                 }
 
                 if(otherName.Contains(HiddenPrefix) || otherName.Contains(ChassisPrefix))
