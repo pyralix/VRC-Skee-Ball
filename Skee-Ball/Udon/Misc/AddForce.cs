@@ -1,6 +1,7 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using VRC.SDKBase;
 
 namespace Pyralix.SkeeBall
 {
@@ -11,7 +12,10 @@ namespace Pyralix.SkeeBall
         //...collides with another collider
         private void OnTriggerEnter(Collider obj)
         {
-            obj.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 450f);
+            if (Utilities.IsValid(obj) && obj != null && obj.GetComponent<Ball>())
+            {
+                obj.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 450f);
+            }
         }
     }
 }

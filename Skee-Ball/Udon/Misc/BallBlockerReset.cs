@@ -14,12 +14,15 @@ namespace Pyralix.SkeeBall
         
         private void OnTriggerExit(Collider other)
         {
-            _ballCount++;
-            if (Networking.IsOwner(gameObject))
+            if(Utilities.IsValid(other) && other != null && other.GetComponent<Ball>())
             {
-                SkeeballMain._IncrementBlockCount();
+                _ballCount++;
+
+                if (Networking.IsOwner(gameObject))
+                {
+                    SkeeballMain._IncrementBlockCount();
+                }
             }
         }
-
     }
 }

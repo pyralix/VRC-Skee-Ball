@@ -1,6 +1,7 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using VRC.SDKBase;
 
 namespace Pyralix.SkeeBall
 {
@@ -13,7 +14,10 @@ namespace Pyralix.SkeeBall
 
         public void OnTriggerExit(Collider other)
         {
-            SkeeballMain._ScorePoints(Points);
+            if(Utilities.IsValid(other) && other != null && other.GetComponent<Ball>())
+            {
+                SkeeballMain._ScorePoints(Points);
+            }
         }
     }
 }
