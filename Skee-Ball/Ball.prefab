@@ -198,7 +198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2691605245080297561}
   - component: {fileID: 2691605245080297559}
-  - component: {fileID: 2691605245080297560}
   m_Layer: 13
   m_Name: Hit
   m_TagString: Untagged
@@ -236,7 +235,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
@@ -316,24 +315,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2691605245080297560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691605245080297558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 5
-  Far: 10
-  Near: 0
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0
 --- !u!1 &2691605246364500466
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2691605246364500467}
   - component: {fileID: 2691605246364500469}
-  - component: {fileID: 2691605246364500468}
   m_Layer: 13
   m_Name: Rolling
   m_TagString: Untagged
@@ -382,7 +362,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 0
@@ -462,21 +442,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2691605246364500468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691605246364500466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 5
-  Far: 10
-  Near: 0
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0

@@ -864,7 +864,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1344965069597978163}
   - component: {fileID: 1344965069597978161}
-  - component: {fileID: 1344965069597978160}
   m_Layer: 13
   m_Name: Speaker
   m_TagString: Untagged
@@ -902,12 +901,12 @@ AudioSource:
   m_Pitch: 1
   Loop: 1
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -942,7 +941,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -982,24 +981,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1344965069597978160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1344965069597978162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 10
-  Far: 200
-  Near: 0.3
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0
 --- !u!1 &1456453787825042044
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1282,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3415256448341031114}
   - component: {fileID: 3415256448341031112}
-  - component: {fileID: 3415256448341031113}
   m_Layer: 0
   m_Name: ButtonPress-On
   m_TagString: Untagged
@@ -1339,12 +1319,12 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -1379,7 +1359,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1419,24 +1399,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3415256448341031113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3415256448341031115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 10
-  Far: 5
-  Near: 2
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0
 --- !u!1 &3415256449036875874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1447,7 +1409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3415256449036875873}
   - component: {fileID: 3415256449036875879}
-  - component: {fileID: 3415256449036875872}
   m_Layer: 0
   m_Name: ButtonPress-Off
   m_TagString: Untagged
@@ -1485,12 +1446,12 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -1525,7 +1486,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1565,24 +1526,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3415256449036875872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3415256449036875874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 10
-  Far: 5
-  Near: 2
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0
 --- !u!1 &3449676675042007799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,7 +3587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1978449148155823500}
   - component: {fileID: 763859354317390242}
-  - component: {fileID: 3972761659448938195}
   m_Layer: 0
   m_Name: TeleReset
   m_TagString: Untagged
@@ -3682,12 +3624,12 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
-  Spatialize: 1
+  Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 0
+  MinDistance: 0
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
@@ -3722,7 +3664,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -3762,24 +3704,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3972761659448938195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6812991642260251852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -617992517, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Gain: 10
-  Far: 5
-  Near: 2
-  VolumetricRadius: 0
-  EnableSpatialization: 1
-  UseAudioSourceVolumeCurve: 0
 --- !u!1 &7151024236958300535
 GameObject:
   m_ObjectHideFlags: 0
