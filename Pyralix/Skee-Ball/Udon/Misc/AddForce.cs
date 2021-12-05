@@ -14,7 +14,7 @@ namespace Pyralix.SkeeBall
         {
             if (Utilities.IsValid(obj) && obj != null && obj.GetComponent<Ball>())
             {
-                obj.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.left * 450f);
+                obj.gameObject.GetComponent<Rigidbody>().AddForce(obj.gameObject.GetComponent<Rigidbody>().velocity.normalized * Time.deltaTime * 10000f);
             }
         }
     }
