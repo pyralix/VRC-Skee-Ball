@@ -9,8 +9,9 @@ namespace Pyralix.SkeeBall
     public class StartResetButton : UdonSharpBehaviour
     {
         [SerializeField] SkeeballMain SkeeballMain;
-        [SerializeField] private AudioSource OnSound;
-        [SerializeField] private AudioSource OffSound;
+        [SerializeField] private AudioSource Speaker;
+        [SerializeField] private AudioClip OnSound;
+        [SerializeField] private AudioClip OffSound;
         [SerializeField] private GameObject PowerLights;
         [SerializeField] private GameObject Button;
 
@@ -21,13 +22,13 @@ namespace Pyralix.SkeeBall
             if (PowerLights.activeSelf)
             {
                 ButtonLightOn = false;
-                OffSound.Play();
+                Speaker.PlayOneShot(OffSound, SkeeballMain._AudioVolume);
                 Button.SetActive(false);
             }
             else
             {
                 ButtonLightOn = true;
-                OnSound.Play();
+                Speaker.PlayOneShot(OnSound, SkeeballMain._AudioVolume);
                 Button.SetActive(true);
             }
             RequestSerialization();
@@ -45,12 +46,12 @@ namespace Pyralix.SkeeBall
         {
             if (ButtonLightOn)
             {
-                OnSound.Play();
+                Speaker.PlayOneShot(OnSound, SkeeballMain._AudioVolume);
                 Button.SetActive(true);
             }
             else
             {
-                OffSound.Play();
+                Speaker.PlayOneShot(OffSound, SkeeballMain._AudioVolume);
                 Button.SetActive(false);
             }
         }

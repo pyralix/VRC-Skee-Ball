@@ -20,7 +20,17 @@ namespace Pyralix.SkeeBall
         [SerializeField] private GameObject OwnerText;
         [SerializeField] private AudioSource Speaker;
         [SerializeField] private AudioClip HighScoreClip;
+        [SerializeField] private AudioClip Ball1;
+        [SerializeField] private AudioClip Ball2;
+        [SerializeField] private AudioClip Ball3;
+        [SerializeField] private AudioClip Ball4;
+        [SerializeField] private AudioClip Ball5;
+        [SerializeField] private AudioClip Ball6;
+        [SerializeField] private AudioClip Ball7;
+        [SerializeField] private AudioClip Ball8;
+        [SerializeField] private AudioClip Ball9;
         [SerializeField] private Transform BallStorage;
+        [SerializeField] public float _AudioVolume = 10f;
         private Ball[] balls;
         private GameObject[] ballGameObjects;
         [SerializeField] private StartResetButton StartResetButton;
@@ -94,7 +104,7 @@ namespace Pyralix.SkeeBall
                         highScoreName = ownerName;
                         HighScoreText.GetComponent<Text>().text = $"Highscore: {highScore}";
                         HighScoreNameText.GetComponent<Text>().text = $"{highScoreName}";
-                        Speaker.PlayOneShot(HighScoreClip, 1.0f);
+                        Speaker.PlayOneShot(HighScoreClip,_AudioVolume);
                     }
                     RequestSerialization();
                     //Lights start in the inactive state, the ballblocker starts in the active state
@@ -119,6 +129,37 @@ namespace Pyralix.SkeeBall
             if (Networking.IsOwner(gameObject))
             {
                 score += points;
+                switch (throwCount)
+                {
+                    case 0:
+                        Speaker.PlayOneShot(Ball1, _AudioVolume);
+                        break;
+                    case 1:
+                        Speaker.PlayOneShot(Ball2, _AudioVolume);
+                        break;
+                    case 2:
+                        Speaker.PlayOneShot(Ball3, _AudioVolume);
+                        break;
+                    case 3:
+                        Speaker.PlayOneShot(Ball4, _AudioVolume);
+                        break;
+                    case 4:
+                        Speaker.PlayOneShot(Ball5, _AudioVolume);
+                        break;
+                    case 5:
+                        Speaker.PlayOneShot(Ball6, _AudioVolume);
+                        break;
+                    case 6:
+                        Speaker.PlayOneShot(Ball7, _AudioVolume);
+                        break;
+                    case 7:
+                        Speaker.PlayOneShot(Ball8, _AudioVolume);
+                        break;
+                    case 8:
+                        Speaker.PlayOneShot(Ball9, _AudioVolume);
+                        break;
+                }
+                
                 throwCount++;
                 if (throwCount >= 9) //Threw all balls TODO: Also a countdown timer
                 {
