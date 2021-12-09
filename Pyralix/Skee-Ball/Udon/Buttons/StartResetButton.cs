@@ -46,12 +46,10 @@ namespace Pyralix.SkeeBall
         {
             if (ButtonLightOn)
             {
-                Speaker.PlayOneShot(OnSound, SkeeballMain._AudioVolume);
                 Button.SetActive(true);
             }
             else
             {
-                Speaker.PlayOneShot(OffSound, SkeeballMain._AudioVolume);
                 Button.SetActive(false);
             }
         }
