@@ -7,22 +7,24 @@ namespace Pyralix.SkeeBall
     [UdonBehaviourSyncMode(BehaviourSyncMode.Manual)]
     public class BoosterButton : UdonSharpBehaviour
     {
+        [SerializeField] private SkeeballMain SkeeballMain;
         [SerializeField] private GameObject BoosterTrigger;
         [SerializeField] private GameObject ButtonLight;
-        [SerializeField] private AudioSource OnSound;
-        [SerializeField] private AudioSource OffSound;
+        [SerializeField] private AudioSource Speaker;
+        [SerializeField] private AudioClip OnSound;
+        [SerializeField] private AudioClip OffSound;
         [UdonSynced] private bool BoosterLightOn;
 
         public override void Interact()
         {
             if (!ButtonLight.activeSelf)
             {
-                OnSound.Play();
+                Speaker.PlayOneShot(OnSound, SkeeballMain._AudioVolume);
                 BoosterLightOn = true;
             }
             else
             {
-                OffSound.Play();
+                Speaker.PlayOneShot(OffSound, SkeeballMain._AudioVolume);
                 BoosterLightOn = false;
             }
             RequestSerialization();
@@ -34,13 +36,13 @@ namespace Pyralix.SkeeBall
         {
             if (BoosterLightOn)
             {
-                OnSound.Play();
+                Speaker.PlayOneShot(OnSound, SkeeballMain._AudioVolume);
                 ButtonLight.SetActive(true);
                 BoosterTrigger.SetActive(true);
             }
             else
             {
-                OffSound.Play();
+                Speaker.PlayOneShot(OffSound, SkeeballMain._AudioVolume);
                 ButtonLight.SetActive(false);
                 BoosterTrigger.SetActive(false);
             }
