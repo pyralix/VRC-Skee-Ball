@@ -289,7 +289,7 @@ namespace Pyralix.SkeeBall
                     SendCustomNetworkEvent(NetworkEventTarget.All, "PowerLightsOff");
                 }
             }
-            OwnerText.GetComponent<Text>().text = $"Player: {ownerName}";
+            OwnerText.GetComponent<Text>().text = ownerName != StartingOwnerText ? $"Player: {ownerName}" : $"{ownerName}";
             ThrowCountText.GetComponent<Text>().text = $"Ball: {throwCount}";
             ScoreText.GetComponent<Text>().text = $"{score}";
             HighScoreText.GetComponent<Text>().text = $"Highscore: {highScore}";
